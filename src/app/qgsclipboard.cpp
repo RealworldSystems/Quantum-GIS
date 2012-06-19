@@ -197,17 +197,17 @@ bool QgsClipboard::hasFormat( const QString& mimeType )
 {
   if(QApplication::clipboard() == NULL)
     {
-      QgsDebugMsg("The application's clipboard is missing");
+      qDebug() << "The application's clipboard is missing";
       return false;
     }
   
   if(QApplication::clipboard()->mimeData() == NULL)
     {
-      QgsDebugMsg("The clipboard's mime data is missing");
+      qDebug() << "The clipboard's mime data is missing";
       return false;
     }
   
-  QgsDebugMsg("Proxying hasFormat to mimeData instance");
+  qDebug() << "Proxying hasFormat to mimeData instance";
 
   return QApplication::clipboard()->mimeData()->hasFormat( mimeType );
 }
@@ -216,17 +216,17 @@ QByteArray QgsClipboard::data( const QString& mimeType )
 {
   if(QApplication::clipboard() == NULL)
     {
-      QgsDebugMsg("The application's clipboard is missing");
+      qDebug() << "The application's clipboard is missing";
       return QByteArray();
     }
   
   if(QApplication::clipboard()->mimeData() == NULL)
     {
-      QgsDebugMsg("The clipboard's mime data is missing");
+      qDebug() << "The clipboard's mime data is missing";
       return QByteArray();
     }
 
-  QgsDebugMsg("Proxying data to mimeData instance");
+  qDebug() << "Proxying hasFormat to mimeData instance";
 
   return QApplication::clipboard()->mimeData()->data( mimeType );
 }

@@ -163,6 +163,10 @@ void QgsApplication::init( QString customConfigPath )
   int myChangeFlag = 0; //whether we want to force the env var to change
   setenv( "GDAL_PAM_PROXY_DIR", myPamPath.toUtf8(), myChangeFlag );
 #endif
+
+  qDebug() << "QGis Application Directory" << applicationDirPath();
+
+  
 }
 
 QgsApplication::~QgsApplication()
