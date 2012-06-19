@@ -462,6 +462,8 @@ const QString QgsApplication::iconsPath()
 */
 const QString QgsApplication::srsDbFilePath()
 {
+  QString srsPath;
+
   if ( ABISYM( mRunningFromBuildDir ) )
   {
     QString tempCopy = QDir::tempPath() + "/srs.db";
@@ -475,12 +477,16 @@ const QString QgsApplication::srsDbFilePath()
       }
     }
 
-    return tempCopy;
+    srsPath = tempCopy;
   }
   else
   {
-    return ABISYM( mPkgDataPath ) + QString( "/resources/srs.db" );
+    srsPath = ABISYM( mPkgDataPath ) + QString( "/resources/srs.db" );
   }
+  
+  qDebug() << "Package Data Path: " << mPkgDataPath;
+  qDebug() << "SRS database path: " << srsPath;
+  return srsPath;
 }
 
 /*!
