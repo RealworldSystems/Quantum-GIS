@@ -23,6 +23,7 @@
 #include <QClipboard>
 #include <QSettings>
 #include <QMimeData>
+#include <QDebug>
 
 #include "qgsclipboard.h"
 #include "qgsfeature.h"

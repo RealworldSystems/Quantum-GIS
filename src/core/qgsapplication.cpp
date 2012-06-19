@@ -26,6 +26,7 @@
 #include <QMessageBox>
 #include <QPalette>
 #include <QSettings>
+#include <QDebug>
 
 #ifndef Q_WS_WIN
 #include <netinet/in.h>
