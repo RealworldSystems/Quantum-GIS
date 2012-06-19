@@ -484,7 +484,7 @@ const QString QgsApplication::srsDbFilePath()
     srsPath = ABISYM( mPkgDataPath ) + QString( "/resources/srs.db" );
   }
   
-  qDebug() << "Package Data Path: " << mPkgDataPath;
+  qDebug() << "Package Data Path: " << ABISYM(mPkgDataPath);
   qDebug() << "SRS database path: " << srsPath;
   return srsPath;
 }
