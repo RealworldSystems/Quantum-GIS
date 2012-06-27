@@ -1172,8 +1172,9 @@ void QgsMapCanvas::setMapTool( QgsMapTool* tool )
 
   if ( mMapTool )
   {
-    qDebug() << "Disconnecting current map tool";
+    qDebug() << __FILE__ << ":" << __LINE__ << "Disconnecting current map tool" << mMapTool;
     disconnect( mMapTool, SIGNAL( destroyed() ), this, SLOT( mapToolDestroyed() ) );
+    qDebug() << __FILE__ << ":" << __LINE__ << "Disconnected current map tool";
     mMapTool->deactivate();
   }
   
