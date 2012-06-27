@@ -35,6 +35,7 @@ email                : sherman at mrcc.com
 #include <QString>
 #include <QStringList>
 #include <QWheelEvent>
+#include <QDebug>
 
 #include "qgis.h"
 #include "qgslogger.h"
@@ -1171,10 +1172,12 @@ void QgsMapCanvas::setMapTool( QgsMapTool* tool )
 
   if ( mMapTool )
   {
+    qDebug() << "Disconnecting current map tool";
     disconnect( mMapTool, SIGNAL( destroyed() ), this, SLOT( mapToolDestroyed() ) );
     mMapTool->deactivate();
   }
-
+  
+  qDebug() << "Remember transient behavior";
   if ( tool->isTransient() && mMapTool && !mMapTool->isTransient() )
   {
     // if zoom or pan tool will be active, save old tool
@@ -1191,6 +1194,7 @@ void QgsMapCanvas::setMapTool( QgsMapTool* tool )
   mMapTool = tool;
   if ( mMapTool )
   {
+    qDebug() << "Connecting new map tool";
     connect( mMapTool, SIGNAL( destroyed() ), this, SLOT( mapToolDestroyed() ) );
     mMapTool->activate();
   }
