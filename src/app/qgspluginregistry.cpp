@@ -407,8 +407,8 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
 
       QString baseName = QFileInfo( myFullPath ).baseName();
       
-      qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Should reload " << 
-	baseName << " " << mySettings.value( "/Plugins/" + baseName ).toBool();
+      qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Should reload" << 
+	baseName << mySettings.value( "/Plugins/" + baseName ).toBool();
       
       if ( mySettings.value( "/Plugins/" + baseName ).toBool() )
       {
@@ -464,7 +464,13 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
 bool QgsPluginRegistry::checkCppPlugin( QString pluginFullPath )
 {
   QLibrary myLib( pluginFullPath );
+  
+  qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library:" << myLib;
+  
   bool loaded = myLib.load();
+
+  qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library loaded?" << loaded;
+
   if ( ! loaded )
   {
     QgsMessageLog::logMessage( QObject::tr( "Failed to load %1 (Reason: %2)" ).arg( myLib.fileName() ).arg( myLib.errorString() ), QObject::tr( "Plugins" ) );
@@ -475,6 +481,8 @@ bool QgsPluginRegistry::checkCppPlugin( QString pluginFullPath )
   description_t *  myDescription = ( description_t * )  cast_to_fptr( myLib.resolve( "description" ) );
   category_t *  myCategory = ( category_t * )  cast_to_fptr( myLib.resolve( "category" ) );
   version_t *  myVersion = ( version_t * ) cast_to_fptr( myLib.resolve( "version" ) );
+
+  qDebug() << myName << myDescription << myCategory << myVersion;
 
   if ( myName && myDescription && myVersion  && myCategory )
     return true;
