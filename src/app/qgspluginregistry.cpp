@@ -401,6 +401,10 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
       // check if the plugin was active on last session
 
       QString baseName = QFileInfo( myFullPath ).baseName();
+      
+      qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Should reload " << 
+	baseName << " " << mySettings.value( "/Plugins/" + baseName );
+      
       if ( mySettings.value( "/Plugins/" + baseName ).toBool() )
       {
         loadCppPlugin( myFullPath );
