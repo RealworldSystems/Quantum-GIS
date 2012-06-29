@@ -479,8 +479,13 @@ bool QgsPluginRegistry::checkCppPlugin( QString pluginFullPath )
   description_t *  myDescription = ( description_t * )  cast_to_fptr( myLib.resolve( "description" ) );
   category_t *  myCategory = ( category_t * )  cast_to_fptr( myLib.resolve( "category" ) );
   version_t *  myVersion = ( version_t * ) cast_to_fptr( myLib.resolve( "version" ) );
-
-  qDebug() << myName << myDescription << myCategory << myVersion;
+  
+  
+  qDebug() << "Category Available?" << myCategory;
+  qDebug() << "Name Available?" << myName;
+  qDebug() << "Version Available?" << myVersion;
+  qDebug() << "Description Available?" << myDescription;
+  
 
   if ( myName && myDescription && myVersion  && myCategory )
     return true;
