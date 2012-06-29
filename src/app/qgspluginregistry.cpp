@@ -465,9 +465,6 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
 bool QgsPluginRegistry::checkCppPlugin( QString pluginFullPath )
 {
   QLibrary myLib( pluginFullPath );
-  
-  qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library:" << myLib.fileName;
-  
   bool loaded = myLib.load();
 
   qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library loaded?" << loaded;
