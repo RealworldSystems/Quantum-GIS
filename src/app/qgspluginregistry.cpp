@@ -466,7 +466,7 @@ bool QgsPluginRegistry::checkCppPlugin( QString pluginFullPath )
 {
   QLibrary myLib( pluginFullPath );
   
-  qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library:" << myLib;
+  qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Library:" << myLib.fileName;
   
   bool loaded = myLib.load();
 
