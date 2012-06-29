@@ -384,8 +384,10 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
 
 #ifdef WIN32
   QString pluginExt = "*.dll";
-#elif ANDROID
+/* sjoerd - I don't see an explicit reason for this yet
+  #elif ANDROID
   QString pluginExt = "*plugin.so";
+*/
 #else
   QString pluginExt = "*.so*";
 #endif
