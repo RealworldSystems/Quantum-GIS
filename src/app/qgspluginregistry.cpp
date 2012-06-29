@@ -398,6 +398,9 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
   for ( uint i = 0; i < myPluginDir.count(); i++ )
   {
     QString myFullPath = thePluginDirString + "/" + myPluginDir[i];
+
+    qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Scanning " << myFullPath;
+
     if ( checkCppPlugin( myFullPath ) )
     {
       // check if the plugin was active on last session
@@ -405,7 +408,7 @@ void QgsPluginRegistry::restoreSessionPlugins( QString thePluginDirString )
       QString baseName = QFileInfo( myFullPath ).baseName();
       
       qDebug() << "qgspluginregistry.cpp:" << __LINE__ << "Should reload " << 
-	baseName << " " << mySettings.value( "/Plugins/" + baseName );
+	baseName << " " << mySettings.value( "/Plugins/" + baseName ).toBool();
       
       if ( mySettings.value( "/Plugins/" + baseName ).toBool() )
       {
