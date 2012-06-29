@@ -21,6 +21,7 @@
 #include <QLibrary>
 #include <QMessageBox>
 #include <QSettings>
+#include <QDebug>
 
 #include "qgis.h"
 #include "qgisinterface.h"
