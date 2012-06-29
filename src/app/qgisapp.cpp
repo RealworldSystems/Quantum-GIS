@@ -66,6 +66,7 @@
 #include <QVBoxLayout>
 #include <QWhatsThis>
 #include <QThread>
+#include <QDebug>
 
 #include <qgsnetworkaccessmanager.h>
 
@@ -549,6 +550,10 @@ QgisApp::QgisApp( QSplashScreen *splash, bool restorePlugins, QWidget * parent, 
   mSplash->showMessage( tr( "Starting Python" ), Qt::AlignHCenter | Qt::AlignBottom );
   qApp->processEvents();
   loadPythonSupport();
+
+  // Add some debugging to know if and what plugins should be loaded
+  qDebug() << "qgisapp.cpp:" << __LINE__ << "Should restore plugins: " << restorePlugins;
+  qDebug() << "qgisapp.cpp:" << __LINE__ << "Known plugin path: " << QgsApplication::pluginPath();
 
   // Create the plugin registry and load plugins
   // load any plugins that were running in the last session
